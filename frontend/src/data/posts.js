@@ -1,0 +1,230 @@
+const posts = [
+  {
+    id: 'navigating-debt-relief',
+    title: 'Navigating Debt Relief: Understanding Your Options',
+    excerpt: 'Explore the pros and cons of debt relief programs so you can choose the right path for your goals.',
+    category: 'Debt Management',
+    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
+    author: 'Amelia Carter',
+    publishedOn: 'January 15, 2024',
+    readingTime: '8 min read',
+    stats: { likes: 25, comments: 12, shares: 5 },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Debt can weigh heavily on your financial well-being and peace of mind. When balances grow faster than payments, it is important to know the relief strategies available to you. Understanding the advantages and cautions associated with each option helps you make confident, informed decisions.',
+      },
+      { type: 'heading', text: 'Debt Consolidation' },
+      {
+        type: 'paragraph',
+        text: 'Debt consolidation lets you combine multiple balances into one new loan, ideally at a lower interest rate. This simplifies payments and can reduce total interest, but it is critical to review the loan terms so you do not extend repayment longer than necessary.',
+      },
+      { type: 'heading', text: 'Debt Management Plans' },
+      {
+        type: 'paragraph',
+        text: 'Debt management plans are coordinated by credit counseling agencies. They negotiate with creditors to secure lower interest rates or monthly payments. While effective, these plans can require you to close revolving accounts during enrollment, which may temporarily affect your credit score.',
+      },
+      { type: 'heading', text: 'Debt Settlement' },
+      {
+        type: 'paragraph',
+        text: 'Debt settlement involves negotiating with creditors to pay a portion of what you owe. This can deliver significant savings, yet the process usually impacts your credit and may result in tax considerations on forgiven amounts. It is best approached with professional guidance.',
+      },
+      { type: 'heading', text: 'Bankruptcy' },
+      {
+        type: 'paragraph',
+        text: 'Bankruptcy provides a legal route to discharge or restructure certain debts. It offers relief when other solutions fall short but leaves a long-term mark on your credit profile. Consider it only after fully evaluating alternative strategies and consulting with financial and legal experts.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Selecting the right debt relief strategy depends on your income, the types of debt involved, and how quickly you need results. Partnering with trusted professionals can help you evaluate each path and design a plan that protects your financial future.',
+      },
+    ],
+    comments: [
+      {
+        id: 'comment-1',
+        author: 'Ethan Harper',
+        postedAt: '2 days ago',
+        message: 'This breakdown clarified the trade-offs of each option. The negotiation tips were especially helpful.',
+        likes: 15,
+        dislikes: 2,
+      },
+      {
+        id: 'comment-2',
+        author: 'Olivia Bennett',
+        postedAt: '1 week ago',
+        message: 'Thank you for outlining the differences between debt management plans and settlement. I feel better prepared to have conversations with my creditors.',
+        likes: 10,
+        dislikes: 1,
+      },
+      {
+        id: 'comment-3',
+        author: 'Noah Carter',
+        postedAt: '2 weeks ago',
+        message: 'The article made complex ideas easy to understand. Great guide for anyone exploring debt relief.',
+        likes: 12,
+        dislikes: 0,
+      },
+    ],
+  },
+  {
+    id: 'understanding-debt-protection-options',
+    title: 'Understanding Your Debt Protection Options',
+    excerpt: 'Learn how different protection plans safeguard your assets and keep your financial goals on track.',
+    category: 'Financial Planning',
+    image: 'https://www.aces.edu/wp-content/uploads/2018/09/iStock-1070910534-scaled.jpg',
+    author: 'Daniel Lee',
+    publishedOn: 'February 2, 2024',
+    readingTime: '6 min read',
+    stats: { likes: 19, comments: 8, shares: 3 },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Debt protection products offer a financial cushion when unexpected events impact your ability to pay. Comparing how each safeguard works can help you tailor coverage to your needs.',
+      },
+      { type: 'heading', text: 'Identify Essential Coverage' },
+      {
+        type: 'paragraph',
+        text: 'Start by cataloging the obligations you want to protect. Mortgages, auto loans, and personal lines of credit may each require different solutions and benefit triggers.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Evaluate policies for exclusions, waiting periods, and claim requirements. Align coverage amounts with your income and the duration of protection you need.',
+      },
+    ],
+    comments: [],
+  },
+  {
+    id: 'impact-of-debt-on-credit-score',
+    title: 'The Impact of Debt on Your Credit Score',
+    excerpt: 'Discover how debt balances influence your credit profile and how to protect your score.',
+    category: 'Credit Scores',
+    image: 'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80',
+    author: 'Sabrina Flores',
+    publishedOn: 'March 10, 2024',
+    readingTime: '7 min read',
+    stats: { likes: 21, comments: 9, shares: 4 },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Your credit score reflects how reliably you manage debt. Utilization ratios, payment history, and account mix all influence the number lenders see.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Building strong habits such as on-time payments and low revolving balances can help you qualify for better rates and long-term savings.',
+      },
+    ],
+    comments: [],
+  },
+  {
+    id: 'debt-collection-rights-protections',
+    title: 'Navigating Debt Collection: Your Rights and Protections',
+    excerpt: 'Understand the rules collectors must follow and how to respond if you feel pressured.',
+    category: 'Legal Advice',
+    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    author: 'Maya Patel',
+    publishedOn: 'April 22, 2024',
+    readingTime: '5 min read',
+    stats: { likes: 15, comments: 6, shares: 2 },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Federal and state laws regulate how debt collectors communicate with you. Knowing your rights ensures you can respond confidently to calls and letters.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Request written validation of the debt and document every interaction. Report harassment or inaccurate claims to the appropriate authorities.',
+      },
+    ],
+    comments: [],
+  },
+  {
+    id: 'sustainable-debt-repayment-plan',
+    title: 'Creating a Sustainable Debt Repayment Plan',
+    excerpt: 'Build a structured approach to eliminate debt while preserving your savings and peace of mind.',
+    category: 'Financial Planning',
+    image: 'https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&w=1200&q=80',
+    author: 'Elliot Grant',
+    publishedOn: 'May 15, 2024',
+    readingTime: '6 min read',
+    stats: { likes: 18, comments: 7, shares: 3 },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'A repayment roadmap keeps progress steady and prevents surprises. Start with a clear picture of income, essential expenses, and minimum payments.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Automate payments where possible and celebrate milestones to stay motivated throughout the journey.',
+      },
+    ],
+    comments: [],
+  },
+  {
+    id: 'legal-aid-for-debt-relief',
+    title: 'When to Seek Legal Advice for Debt Relief',
+    excerpt: 'Recognize the signs that it is time to involve an attorney or legal aid organization.',
+    category: 'Legal Advice',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
+    author: 'Jordan Wells',
+    publishedOn: 'June 3, 2024',
+    readingTime: '5 min read',
+    stats: { likes: 11, comments: 4, shares: 2 },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Legal professionals can help interpret complex agreements and represent you during negotiations. Their guidance is particularly valuable when lawsuits or wage garnishments are involved.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Community legal clinics often provide sliding-scale or pro bono assistance. Reach out early to keep your options open.',
+      },
+    ],
+    comments: [],
+  },
+  {
+    id: 'building-financial-resilience',
+    title: 'Building Financial Resilience Against Debt',
+    excerpt: 'Strengthen your emergency reserves and credit profile to prevent future debt stress.',
+    category: 'Financial Planning',
+    image: 'https://daulat.co.in/wp-content/uploads/2023/03/40450-scaled.jpg',
+    author: 'Laura Chen',
+    publishedOn: 'July 8, 2024',
+    readingTime: '9 min read',
+    stats: { likes: 17, comments: 5, shares: 4 },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Financial resilience is the ability to withstand unexpected expenses without derailing long-term goals. Emergency savings and diversified income streams are key pillars.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Review insurance coverage, track cash flow trends, and build habits that keep spending aligned with priorities.',
+      },
+    ],
+    comments: [],
+  },
+  {
+    id: 'credit-counseling-strategies',
+    title: 'How Credit Counseling Supports Your Debt Strategy',
+    excerpt: 'Work with certified counselors to gain clarity on budgeting, credit, and repayment tactics.',
+    category: 'Debt Management',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80',
+    author: 'Renee Walters',
+    publishedOn: 'August 12, 2024',
+    readingTime: '7 min read',
+    stats: { likes: 14, comments: 6, shares: 3 },
+    content: [
+      {
+        type: 'paragraph',
+        text: 'Credit counseling gives you a structured plan tailored to your finances. Counselors review your budget, recommend repayment methods, and advocate for lower fees with creditors.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Choose accredited agencies and confirm fee structures so the support you receive aligns with your expectations.',
+      },
+    ],
+    comments: [],
+  },
+];
+
+export default posts;
