@@ -47,13 +47,32 @@ app.use(helmet({
 app.use(limiter);
 
 // CORS configuration
+const allowedOrigins = [
+  'https://debtprotection.org',
+  'https://www.debtprotection.org',
+];
+
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://yourfrontend.com'] 
-    : (origin, callback) => callback(null, true), // Allow all origins in dev
+  origin: (origin, callback) => {
+    // allow no-origin (like server-to-server, curl, health checks)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie', 'Cache-Control', 'Pragma', 'Expires']
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    'Cookie',
+    'Cache-Control',
+    'Pragma',
+    'Expires',
+  ],
 }));
 
 // Body parsing middleware
