@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const rateLimit = require('express-rate-limit');
 const path = require('path');
 require('dotenv').config();
 
@@ -30,21 +29,12 @@ const PORT = process.env.PORT || 5011;
 // Connect to database
 connectDB();
 
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
-  message: {
-    error: 'Too many requests',
-    message: 'Please try again later'
-  }
-});
-
 // Security middleware
-app.use(helmet({
-  crossOriginResourcePolicy: { policy: "cross-origin" }
-}));
-app.use(limiter);
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  })
+);
 
 // CORS configuration
 const allowedOrigins = [
@@ -52,28 +42,30 @@ const allowedOrigins = [
   'https://www.debtprotection.org',
 ];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    // allow no-origin (like server-to-server, curl, health checks)
-    if (!origin) return callback(null, true);
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // allow no-origin (like server-to-server, curl, health checks)
+      if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
 
-    return callback(new Error('Not allowed by CORS'));
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: [
-    'Content-Type',
-    'Authorization',
-    'Cookie',
-    'Cache-Control',
-    'Pragma',
-    'Expires',
-  ],
-}));
+      return callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'Cookie',
+      'Cache-Control',
+      'Pragma',
+      'Expires',
+    ],
+  })
+);
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
@@ -84,15 +76,21 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
+// 🔍 DEBUG: log every incoming request so we see what URL hits via nginx
+app.use((req, res, next) => {
+  console.log('[BLOG BACKEND]', req.method, req.originalUrl);
+  next();
+});
+
 // Static files - serve uploaded images
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'OK', 
+  res.json({
+    status: 'OK',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
   });
 });
 
@@ -110,35 +108,36 @@ app.use('/api', mediaRoutes);
 app.use('*', (req, res) => {
   res.status(404).json({
     error: 'Not Found',
-    message: 'The requested resource was not found'
+    message: 'The requested resource was not found',
   });
 });
 
 // Global error handler
 app.use((error, req, res, next) => {
   console.error('Global error handler:', error);
-  
+
   // Multer error handling
   if (error.code === 'LIMIT_FILE_SIZE') {
     return res.status(400).json({
       error: 'File too large',
-      message: 'Please upload an image smaller than 5MB'
+      message: 'Please upload an image smaller than 5MB',
     });
   }
 
   if (error.message === 'Not an image! Please upload only images.') {
     return res.status(400).json({
       error: 'Invalid file type',
-      message: 'Please upload only image files'
+      message: 'Please upload only image files',
     });
   }
 
   // Default error response
   res.status(500).json({
     error: 'Internal Server Error',
-    message: process.env.NODE_ENV === 'production' 
-      ? 'Something went wrong' 
-      : error.message
+    message:
+      process.env.NODE_ENV === 'production'
+        ? 'Something went wrong'
+        : error.message,
   });
 });
 
